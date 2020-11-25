@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="https://meyerweb.com/eric/tools/css/reset/reset.css">
     <link rel="stylesheet" type="text/css" href="style.css">
-    <script src="script.js"></script>
+    <script defer src="script.js"></script>
 
     <title>Tic-Tac-Toe</title>
 
@@ -14,30 +14,48 @@
 
 <body>
 
-    <div id="title-container">  
+    <div id="title-container">
         <div id="game-title">
             <img src="images/tictactoe.png" alt="tic-tac-toe" srcset="">
         </div>
 
         <div id="player-select-container">
-            <h4>Player 1</h4>
-            <input class="tgl tgl-flip" id="player-one" type="checkbox" />
-            <label class="tgl-btn" data-tg-off="Human" data-tg-on="AI" for="player-one"></label>
 
-            <h4>Player 2</h4>
-            <input class="tgl tgl-flip" id="player-two" type="checkbox" />
-            <label class="tgl-btn" data-tg-off="Human" data-tg-on="AI" for="player-two"></label>
+            <div class="player-container">
+                <h4 class="player-name">Player 1</h4>
+                <input class="tgl tgl-flip" id="player-one" type="checkbox" />
+                <label class="tgl-btn" data-tg-off="Human" data-tg-on="AI" for="player-one"></label>
+            </div>
 
+            <div class="player-container">
+                <h4 class="player-name">Player 2</h4>
+                <input class="tgl tgl-flip" id="player-two" type="checkbox" />
+                <label class="tgl-btn" data-tg-off="Human" data-tg-on="AI" for="player-two"></label>
+            </div>
         </div>
 
         <button id="start-game" onclick=hideTitle()>Start Game</button>
     </div>
 
     <div id="game-container">
-        <p>Welcome to Tic-Tac-Toe</p>
-
+        <div id="board-container">
+            <div class="row" id="upper">
+                <div class="game-board" id="ulq"></div>
+                <div class="game-board" id="ucq"></div>
+                <div class="game-board" id="urq"></div>
+            </div>
+            <div class="row" id="middle">
+                <div class="game-board" id="mlq"></div>
+                <div class="game-board" id="mcq"></div>
+                <div class="game-board" id="mrq"></div>
+            </div>
+            <div class="row" id="lower">
+                <div class="game-board" id="llq"></div>
+                <div class="game-board" id="lcq"></div>
+                <div class="game-board" id="lrq"></div>
+            </div>
+        </div>
     </div>
-
 
 
 </body>
