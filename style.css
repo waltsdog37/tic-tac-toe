@@ -1,0 +1,102 @@
+
+#title-container {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgb(0, 151, 151);
+}
+
+#game-container {
+    display: none;
+    width: 100vw;
+    height: 100vh;
+    background-color: pink;
+
+}
+
+#game-title {
+    display: flex;
+    justify-content: center;
+    padding: 50px;
+}
+
+img {
+    width: 70%;
+}
+
+#start-game {
+    width: 200px;
+    height: 100px;
+    margin: 0 auto;
+    background-color: #B94FFF;
+    font-size: 30px;
+    color: #66FFCC;
+    outline: none;
+    border-radius: 25px;
+    border: solid #66FFCC 4px;
+}
+
+#start-game:hover {
+    background-color: #66ffcc;
+    color: #B94FFF;
+}
+
+#player-select-container{
+    display: flex;
+    flex-direction: row;
+    margin: 100px auto 50px;
+    border: black solid 4px;
+    height  
+}
+
+.tgl-flip {
+    position: absolute;
+    left: -9999px;
+}
+
+.tgl-flip + .tgl-btn {
+    width: 100px;
+    padding: 2px;
+    transition: all 0.2s ease;
+    font-family: sans-serif;
+    perspective: 100px;
+}
+.tgl-flip + .tgl-btn:after, .tgl-flip + .tgl-btn:before {
+    display: inline-block;
+    transition: all 0.4s ease;
+    width: 100%;
+    text-align: center;
+    position: absolute;
+    line-height: 2em;
+    font-weight: bold;
+    color: #fff;
+    position: absolute;
+    top: 0;
+    left: 0;
+    backface-visibility: hidden;
+    border-radius: 4px;
+}
+.tgl-flip + .tgl-btn:after {
+    content: attr(data-tg-on);
+    background: #02c66f;
+    transform: rotateY(-180deg);
+}
+.tgl-flip + .tgl-btn:before {
+    background: #ff3a19;
+    content: attr(data-tg-off);
+}
+.tgl-flip + .tgl-btn:active:before {
+    transform: rotateY(-20deg);
+}
+.tgl-flip:checked + .tgl-btn:before {
+    transform: rotateY(180deg);
+}
+.tgl-flip:checked + .tgl-btn:after {
+    transform: rotateY(0);
+    left: 0;
+    background: blue;
+}
+.tgl-flip:checked + .tgl-btn:active:after {
+    transform: rotateY(20deg);
+}
