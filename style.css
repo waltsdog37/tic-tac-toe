@@ -81,7 +81,7 @@ img {
     transform: rotateY(-180deg);
 }
 .tgl-flip + .tgl-btn:before {
-    background: #ff3a19;
+    background: #d37868;
     content: attr(data-tg-off);
 }
 .tgl-flip + .tgl-btn:active:before {
@@ -93,7 +93,7 @@ img {
 .tgl-flip:checked + .tgl-btn:after {
     transform: rotateY(0);
     left: 0;
-    background: blue;
+    background: rgb(81, 81, 236);
 }
 .tgl-flip:checked + .tgl-btn:active:after {
     transform: rotateY(20deg);
@@ -101,6 +101,9 @@ img {
 
 #board-container {
     margin: auto;
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+
 }
 
 #game-title {
@@ -119,11 +122,11 @@ img {
 
 .game-board {
     display: flex;
-    width: 100px;
-    height: 100px;
+    width: 150px;
+    height: 150px;
     border: solid #B94FFF 3px;
     color: #5e887a;
-    font-size: 70px;
+    font-size: 100px;
     justify-content: center;
     align-items: center;
 
@@ -133,44 +136,61 @@ img {
     background-color: rgb(231, 229, 229);
 }
 
+/* remove border sections to create game board */
+.game-board:first-child,
+.game-board:nth-child(2),
+.game-board:nth-child(3) {
+    border-top: none;
+}
+
+.game-board:last-child,
+.game-board:nth-child(7),
+.game-board:nth-child(8) {
+    border-bottom: none;
+}
+
+.game-board:nth-child(3n + 1) {
+    border-left: none;
+}
+
+.game-board:nth-child(3n + 3) {
+    border-right: none;
+}
+
 .row {
     display: flex;
     flex-direction: row;
 }
 
-#ulq {
-    border-left: 0;
-    border-top: 0;
+
+#player-ids-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    color: #731dac;
 }
 
-#ucq {
-    border-top: 0;
+.player-id {
+    display: flex;
+    flex-direction: column;
+    padding: 100px;
+    text-align: center;
+    font-size: 60px;
+
 }
 
-#urq {
-    border-top: 0;
-    border-right: 0;
+.human-ai {
+    font-size: 40px;
+    padding: 10px 0;
 }
 
-#mlq {
-    border-left: 0;
+.mark {
+    color: #5e887a;
 }
 
-#mrq {
-    border-right: 0;
-}
+#error-message {
+    text-align: center;
+    color: red;
+    font-size: 40px;
 
-#llq {
-    border-left: 0;
-    border-bottom: 0;
 }
-
-#lcq {
-    border-bottom: 0;
-}
-
-#lrq {
-    border-right: 0;
-    border-bottom: 0;
-}
-
