@@ -157,12 +157,6 @@ img {
     border-right: none;
 }
 
-.row {
-    display: flex;
-    flex-direction: row;
-}
-
-
 #player-ids-container {
     display: flex;
     flex-direction: row;
@@ -188,9 +182,15 @@ img {
     color: #5e887a;
 }
 
-#error-message {
-    text-align: center;
-    color: red;
-    font-size: 40px;
+#game-end-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: none;
+    background-color: grey;
+    opacity: 0.5;
+}
 
+#game-end-container show {
+    
 }
