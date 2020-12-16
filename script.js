@@ -41,11 +41,13 @@ function markBoard(e) {
     let cell = e.target;
     let currentTurn = xTurn ? playerO : playerX;
     placeMark(cell, currentTurn);
-    newTurn();
-    }
+
     // check for win
+    checkWin(currentTurn);
     // check for draw
-    //newTurn();
+    // trigger new turn
+    newTurn();
+}
 
 // add mark to gameboard array and update gameboard
 function placeMark(cell, currentTurn) {
@@ -68,22 +70,28 @@ function newTurn() {
 
 // check for win condition with current player
 function checkWin(currentTurn) {
-    return winConditions.some(combination => {
-        return combination.every(index => {
-            return squares[index].innerHTML == (currentTurn);
-        })
-    })
-}
-
-/*
-function endGame(draw) {
-    if (draw) {
-
-    } else {
-        gameEndElement.style.display = "block";
+    // loop through win conditions to match gameboard
+    for (let i = 0; i < winConditions.length; i++) {
+        let first = winConditions[i][0];
+        let second = winConditions[i][1];
+        let third = winConditions[i][2];
+        if (gameboard[first] == currentTurn &&
+            gameboard[second] == currentTurn &&
+            gameboard[third] == currentTurn) {
+                console.log('winner: ' +currentTurn);
+            }
     }
 }
 
+    // return winConditions.some(combination => {
+    //     return combination.every(index => {
+    //         console.log(squares[index].innerHTML == (currentTurn));
+    //         });
+    // });
+
+
+
+/*
 function isDraw() {
     return squares
 }
