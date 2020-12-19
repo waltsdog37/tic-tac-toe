@@ -7,7 +7,7 @@
     background-color: rgb(0, 151, 151);
 }
 
-img {
+#title-image {
     width: 70%;
 }
 
@@ -185,12 +185,56 @@ img {
 #game-end-container {
     position: fixed;
     top: 0;
-    left: 0;
     display: none;
-    background-color: grey;
-    opacity: 0.5;
+    width: 100vw;
+    height: 100vh;
 }
 
-#game-end-container show {
-    
+#game-end-message {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: flex-end;
+    box-shadow: 0 0 1em 2em #B94FFF;
+    border-radius: 25px;
+    width: 300px;
+    height: 300px;
+    margin: 550px auto;
+    background-color: white;;
+}
+
+#message {
+    position: relative;
+    margin: auto;
+    color: #B94FFF;
+    font-size: 40px;
+    font-weight: bold;
+}
+
+
+#end-buttons {
+    display: flex;
+    width: 100%;
+}
+
+#end-buttons > button {
+    background-color: #66ffcc;
+    width: 50%;
+    height: 50px;
+    font-size: 20px;
+    outline: none;
+    border: none;
+}
+
+#end-buttons > button:hover {
+    background-color:#B94FFF;
+    color: white;
+}
+
+.new-game {
+    border-bottom-left-radius: 25px;
+}
+
+.reset {
+    border-bottom-right-radius: 25px;
 }

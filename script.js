@@ -1,5 +1,6 @@
 // store blank gameboard in array
 let gameboard = ['', '', '', '', '', '', '', '', ''];
+// player placeholders - until player object code is written
 const playerX = "X";
 const playerO = "O";
 let xTurn;
@@ -15,14 +16,23 @@ const winConditions = [
 ];
 
 // DOM variables
-let errorMessage = document.getElementById("error-message");
 let titleScreen = document.getElementById("title-container");
 let gameScreen = document.getElementById("game-container");
 let squares = document.querySelectorAll(".game-board");
-let playerOne = document.getElementById("player-one");
-let playerTwo = document.getElementById("player-two");
+let playerOneElement = document.getElementById("player-one");
+let playerTwoElement = document.getElementById("player-two");
 let gameEndElement = document.getElementById("game-end-container");
+let messageElement = document.getElementById("message");
 
+// TODO: create object and constructor for players
+const playerFactory = (name, isHuman, mark) => {
+    const getName = () => name;
+    const getIsHuman = () => isHuman;
+    const getMark = () => {
+        // if player == 1, mark = "X"
+        // else mark = "O"
+    };
+}
 
 // listen for clicks on each square, prevent multi-click
 squares.forEach(cell => {
@@ -33,7 +43,8 @@ squares.forEach(cell => {
 function hideTitle() {
     titleScreen.style.display = "none";
     gameScreen.style.display = "flex";
-    //getPlayers();
+    // TODO: getPlayers();
+
 }
 
 // main click function
@@ -45,6 +56,7 @@ function markBoard(e) {
     // check for win
     checkWin(currentTurn);
     // check for draw
+    checkDraw();
     // trigger new turn
     newTurn();
 }
@@ -53,11 +65,8 @@ function markBoard(e) {
 function placeMark(cell, currentTurn) {
     let cellIndex = cell.getAttribute("data-index");
     gameboard[cellIndex] = currentTurn;
-    renderMarks();
-}
-
-// fill in gameboard with marks from gameboard array
-function renderMarks() {
+    
+    // fill in the gameboard with marks from gameboard array
     for (let i = 0; i < 9; i++) {
         squares[i].innerHTML = gameboard[i];
     }
@@ -78,21 +87,36 @@ function checkWin(currentTurn) {
         if (gameboard[first] == currentTurn &&
             gameboard[second] == currentTurn &&
             gameboard[third] == currentTurn) {
-                console.log('winner: ' +currentTurn);
-            }
+
+            // prevent further cell clicks
+            squares.forEach(cell => {
+                cell.removeEventListener("click", markBoard);
+            });
+            gameEndScreen(currentTurn);
+        }
     }
 }
 
-    // return winConditions.some(combination => {
-    //     return combination.every(index => {
-    //         console.log(squares[index].innerHTML == (currentTurn));
-    //         });
-    // });
+// check if all squares are full (happens after checkWin func)
+function checkDraw() {
+    for (i = 0; i < gameboard.length; i++) {
+        if (gameboard[i] == '') {
+            return false;
+        }
+    }
 
-
-
-/*
-function isDraw() {
-    return squares
+    // TODO: still logs draw if full and is winner
+    gameEndScreen("draw");
 }
-*/
+
+function gameEndScreen(result) {
+    gameScreen.style.opacity = 0.25;
+    gameEndElement.style.display = "block";
+    let message;
+    if (result == "draw"){
+        message = "It's a draw"
+    } else {
+        message = result + " is the winner";
+    }
+    messageElement.innerText = message;
+}
